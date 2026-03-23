@@ -1,0 +1,189 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inria Serif", serif;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #E0A800;
+  color: white;
+  padding: 15px 80px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* ✅ FIXED */
+.navbar.animate-navbar {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: navbarFade 0.6s ease forwards;
+}
+
+@keyframes navbarFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* NAV LINKS */
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.nav-links a.active {
+  background: white;
+  color: #E0A800;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+}
+
+/* ICONS */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.icon svg {
+  color: white;
+  font-size: 18px;
+}
+
+.icon:hover {
+  background: white;
+}
+
+.icon:hover svg {
+  color: #E0A800;
+}
+
+.icon.active {
+  background: white;
+}
+
+.icon.active svg {
+  color: #E0A800;
+}
+
+/* HERO SECTION */
+.hero-section {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #d89c00 50%, #ffffff 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* BOTTLE */
+.bottle {
+  width: 650px;
+  opacity: 0;
+  transform: scale(0.8);
+}
+.center-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* START ANIMATION */
+.bottle.start {
+  animation: bottleEnter 0.8s ease forwards, float 3s ease-in-out infinite;
+}
+
+@keyframes bottleEnter {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* TEXT */
+.text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* LEFT */
+.left {
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+}
+
+/* RIGHT */
+.right {
+  top: 50%;
+  right: 15%;
+  transform: translateY(-50%);
+}
+
+/* BOX */
+.box {
+  background: #e5e5e5;
+  padding: 20px 28px;
+  border-radius: 20px;
+  font-size: 25px;
+  min-width: 260px;
+  text-align: center;
+
+  opacity: 0;
+  animation: slideBox 0.8s ease forwards;
+  animation-play-state: paused;
+}
+
+/* HIGHLIGHT */
+.highlight {
+  background: #e6d3a3;
+}
+
+/* START POSITIONS */
+.left .box {
+  transform: translateX(-120px);
+}
+
+.right .box {
+  transform: translateX(120px);
+}
+
+/* SHOW TEXT */
+.text.show .box {
+  animation-play-state: running;
+}
+
+@keyframes slideBox {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

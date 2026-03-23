@@ -1,0 +1,178 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+font-family:"Inria Serif", serif;
+  background: #f5f5f5;
+}
+
+/* LAYOUT */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR (NORMAL - NO STICKY) */
+.dashboard-sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #3a2c00, #5a4300);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100vh; /* full height */
+}
+
+/* LOGO */
+.dashboard-logo {
+  margin-bottom: 20px;
+}
+
+/* MENU */
+.menu {
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  transition: 0.3s;
+}
+
+/* ACTIVE + HOVER */
+.menu.active,
+.menu:hover {
+  background: #E0A800;
+  color: #3a2c00;
+}
+
+/* RIGHT SIDE */
+.dashboard-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPBAR (NORMAL) */
+.topbar {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+
+  background: #f5f5f5;
+}
+
+/* SEARCH */
+.search {
+  width: 50%;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ICONS */
+.top-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.top-icons svg {
+  background: #f5d47a;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.dashboard {
+  padding: 20px 30px;
+}
+
+/* TEXT */
+.subtitle {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* COLORS */
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+/* TABLE */
+.orders {
+  background: white;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #E0A800;
+  color: white;
+  padding: 12px;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* STATUS */
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.progress {
+  background: #fff3cd;
+}
+
+.done {
+  background: #d4edda;
+}
+
+.pending {
+  background: #ffeeba;
+}
+
+.cancel {
+  background: #f8d7da;
+}

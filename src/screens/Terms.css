@@ -1,0 +1,165 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inria Serif", serif;
+
+}
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #d89c00;
+  padding: 15px 60px;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.icon {
+  color: white;
+  font-size: 18px;
+}
+
+.icon.active {
+  background: white;
+  color: #d89c00;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+/* ===== MAIN ===== */
+.profile-page-main {
+  display: flex;
+  padding: 40px 60px;
+  gap: 40px;
+  background: #f9f9f9;
+}
+
+/* ===== SIDEBAR ===== */
+.profile-sidebar-main {
+  width: 250px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.menu-item {
+  display: block;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: #eee;
+  text-decoration: none;
+  color: black;
+}
+
+.menu-item.active {
+  background: #d89c00;
+  color: white;
+}
+
+.logout {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #ff4d4d;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ===== CONTENT ===== */
+.profile-content-main {
+  flex: 1;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.profile-content-main h2 {
+  margin-bottom: 20px;
+}
+
+/* LIST STYLE */
+.profile-content-main ol {
+  padding-left: 20px;
+}
+
+.profile-content-main li {
+  margin-bottom: 10px;
+  color: #555;
+  line-height: 1.6;
+}
+/* FOOTER */
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #312604;
+    color: white;
+    padding: 60px 80px;
+    gap: 40px;
+}
+.footer h3 {
+    font-size: 20px;
+}
+
+.footer h4 {
+    font-size: 20px;
+}
+
+.footer p {
+    color: #ddd;
+    transition: 0.3s;
+    font-size: 16px;
+     margin-bottom:5px;
+}
+
+
+.footer p:hover {
+    color: #f5c842;
+    cursor: pointer;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ddd;
+  
+}
+
+.footer a:visited {
+    color: #ddd;
+      font-size: 16px;
+}
+
+.footer a:hover {
+    color: #f5c842;
+}
+
+.copyright {
+    text-align: center;
+    background: #312604;
+    color: #ddd;
+    padding: 15px;
+    font-size: 14px;
+}

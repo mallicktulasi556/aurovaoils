@@ -1,0 +1,285 @@
+body{
+margin:0;
+font-family:"Inria Serif", serif;
+background:#f6f6f6;
+animation:fadeInPage 0.7s ease;
+}
+@keyframes fadeInPage{
+from{
+opacity:0;
+transform:translateY(8px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#E0A800;
+color:white;
+padding:15px 70px;
+box-shadow:0 4px 20px rgba(0,0,0,0.12);
+}
+
+.logo{
+font-size:22px;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+list-style:none;
+}
+.nav-links a{
+text-decoration:none;
+color:white;
+padding:8px 18px;
+border-radius:20px;
+transition:0.3s;
+}
+
+.nav-links a.active{
+background:white;
+color:#E0A800;
+font-weight:600;
+}
+.nav-links li{
+cursor:pointer;
+}
+
+.nav-icons{
+display:flex;
+gap:20px;
+}
+
+/* icon container */
+.icon{
+display:flex;
+align-items:center;
+justify-content:center;
+width:36px;
+height:36px;
+border-radius:50%;
+transition:0.3s;
+}
+
+/* icon itself */
+.icon svg{
+color:white;
+font-size:18px;
+transition:0.3s;
+}
+
+/* hover */
+.icon:hover{
+background:white;
+}
+
+.icon:hover svg{
+color:#E0A800;
+}
+
+/* active icon */
+.icon.active{
+background:white;
+}
+
+.icon.active svg{
+color:#E0A800;
+}
+
+.contact-section{
+padding:60px 80px;
+background:#f7f7f7;
+}
+
+.contact-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+
+/* FORM */
+
+.contact-form{
+background:white;
+padding:30px;
+border-radius:15px;
+border:1px solid #e2c56c;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+transition:all 0.3s ease;
+}
+.contact-form:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 30px rgba(0,0,0,0.08);
+}
+.contact-form h2{
+margin-bottom:20px;
+}
+
+.contact-form label{
+display:block;
+margin-top:15px;
+font-weight:500;
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:14px;
+margin-top:8px;
+border-radius:12px;
+border:1px solid #e2c56c;
+outline:none;
+border:1px solid #E0A800;
+box-shadow:0 0 0 3px rgba(211,155,0,0.15);
+background:#fffdf7;
+}
+
+.contact-form textarea{
+height:120px;
+}
+
+.send-btn{
+margin-top:20px;
+background:#E0A800;
+border:none;
+color:white;
+padding:14px;
+width:100%;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+transition:all 0.3s ease;
+}
+.send-btn:hover{
+background:#E0A800;
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+}
+
+.send-btn:active{
+transform:scale(0.97);
+}
+/* RIGHT SIDE */
+
+.contact-right{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.contact-info{
+background:white;
+padding:25px;
+border-radius:15px;
+border:1px solid #e2c56c;
+transition:all 0.3s ease;
+}
+.contact-info:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+.info-item{
+display:flex;
+gap:15px;
+margin-top:15px;
+align-items:center;
+}
+
+.icon-box{
+background:#f5e1a3;
+width:50px;
+height:50px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#E0A800;
+font-size:18px;
+transition:all 0.3s ease;
+}
+
+.contact-info:hover .icon-box{
+transform:scale(1.1);
+background:#f8e6a9;
+}
+/* MAP */
+
+.map{
+background:white;
+border-radius:15px;
+overflow:hidden;
+border:1px solid #e2c56c;
+}
+.map:hover img{
+transform:scale(1.05);
+}
+.map img{
+width:100%;
+height:250px;
+object-fit:cover;
+transition:transform 0.5s ease;
+}
+
+
+
+/* FOOTER */
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #312604;
+    color: white;
+    padding: 60px 80px;
+    gap: 40px;
+}
+.footer h3 {
+    font-size: 20px;
+}
+
+.footer h4 {
+    font-size: 20px;
+}
+
+.footer p {
+    color: #ddd;
+    transition: 0.3s;
+    font-size: 16px;
+     margin-bottom:5px;
+}
+
+.footer p:hover {
+    color: #f5c842;
+    cursor: pointer;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ddd;
+  
+}
+
+.footer a:visited {
+    color: #ddd;
+      font-size: 16px;
+      
+}
+
+.footer a:hover {
+    color: #f5c842;
+}
+
+.copyright {
+    text-align: center;
+    background: #312604;
+    color: #ddd;
+    padding: 15px;
+    font-size: 14px;
+}

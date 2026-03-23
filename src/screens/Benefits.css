@@ -1,0 +1,231 @@
+body{
+margin:0;
+font-family:"Inria Serif", serif;
+background:#f6f6f6;
+animation:fadePage 0.8s ease;
+}
+@keyframes fadePage{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#E0A800;
+color:white;
+padding:15px 70px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.logo{
+font-size:22px;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+list-style:none;
+}
+.nav-links a{
+text-decoration:none;
+color:white;
+padding:8px 18px;
+border-radius:20px;
+transition:0.3s;
+position:relative;
+}
+.nav-links a:hover::after{
+width:100%;
+}
+.nav-links a.active{
+background:white;
+color:#E0A800;
+font-weight:600;
+}
+.nav-links li{
+cursor:pointer;
+}
+
+.nav-icons{
+display:flex;
+gap:20px;
+}
+
+/* icon container */
+.icon{
+display:flex;
+align-items:center;
+justify-content:center;
+width:36px;
+height:36px;
+border-radius:50%;
+transition:0.3s;
+}
+
+/* icon itself */
+.icon svg{
+color:white;
+font-size:18px;
+transition:0.3s;
+}
+
+/* hover */
+.icon:hover{
+background:white;
+}
+
+.icon:hover svg{
+color:#E0A800;
+}
+
+/* active icon */
+.icon.active{
+background:white;
+}
+
+.icon.active svg{
+color:#E0A800;
+}
+
+.icon{
+color:#E0A800;
+font-size:18px;
+transition:0.3s;
+}
+/* HEADER */
+
+.health-header{
+text-align:center;
+padding:60px 20px 40px;
+}
+
+.health-header h1{
+font-weight:700;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.health-header span{
+color:#E0A800;
+}
+
+.health-header p{
+max-width:600px;
+margin:auto;
+color:#555;
+}
+
+
+/* BENEFITS GRID */
+
+.benefits-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+padding:40px 80px;
+}
+
+.benefit-box{
+background:white;
+padding:30px;
+border-radius:12px;
+border:1px solid #e3c46d;
+transition:all 0.35s ease;
+box-shadow:0 6px 16px rgba(0,0,0,0.06);
+}
+.benefit-box:hover{
+transform:translateY(-6px);
+box-shadow:0 18px 35px rgba(0,0,0,0.15);
+border-color:#E0A800;
+}
+.benefit-box h2{
+margin-bottom:20px;
+}
+
+.benefit-box ul{
+list-style:none;
+padding:0;
+}
+
+.benefit-box li{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:14px;
+font-size:16px;
+transition:0.3s;
+}
+.benefit-box li:hover{
+transform:translateX(6px);
+}
+.leaf-icon{
+color:#E0A800;
+transition:0.3s;
+}
+
+.benefit-box:hover .leaf-icon{
+transform:scale(1.3);
+}
+
+/* FOOTER */
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #312604;
+    color: white;
+    padding: 60px 80px;
+    gap: 40px;
+}
+.footer h3 {
+    font-size: 20px;
+}
+
+.footer h4 {
+    font-size: 20px;
+}
+
+.footer p {
+    color: #ddd;
+    transition: 0.3s;
+    font-size: 16px;
+    margin-bottom:5px;
+}
+
+.footer p:hover {
+    color: #f5c842;
+    cursor: pointer;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ddd;
+  
+}
+
+.footer a:visited {
+    color: #ddd;
+      font-size: 16px;
+       
+}
+
+.footer a:hover {
+    color: #f5c842;
+}
+
+.copyright {
+    text-align: center;
+    background: #312604;
+    color: #ddd;
+    padding: 15px;
+    font-size: 14px;
+}

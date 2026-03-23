@@ -1,0 +1,118 @@
+/* LAYOUT */
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+ font-family:"Inria Serif", serif;
+}
+
+/* SIDEBAR */
+/* FIXED SIDEBAR */
+.dashboard-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 240px;
+  background: #312604;
+  color: white;
+  padding: 20px;
+}
+
+.dashboard-logo {
+  margin-bottom: 30px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin: 10px 0;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+}
+
+.menu.active {
+  background: #d4a000;
+  color: black;
+}
+
+/* RIGHT */
+.dashboard-right{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 400px;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.top-icons svg {
+  margin-left: 15px;
+  background: #f0d48a;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+/* PAGE */
+.settings-page h1 {
+  margin-bottom: 5px;
+}
+
+.settings-page p {
+  color: gray;
+  margin-bottom: 25px;
+}
+
+/* ITEMS */
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* TOGGLE */
+.toggle {
+  width: 50px;
+  height: 25px;
+  background: #eee;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.toggle::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #bbb;
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle.active {
+  background: #d4a000;
+}
+
+.toggle.active::before {
+  transform: translateX(24px);
+  background: white;
+}

@@ -1,0 +1,113 @@
+/* WRAPPER */
+.admin-wrapper{
+display:flex;
+height:100vh;
+background:#f5f5f5;
+}
+
+/* LEFT */
+.admin-left{
+flex:1;
+padding:80px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.admin-left h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+/* TOP BUTTON */
+.top-btn{
+width:150px;
+background:#E0A800;
+color:white;
+border:none;
+padding:12px;
+border-radius:30px;
+font-weight:600;
+margin-bottom:30px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* LABEL */
+.admin-left label{
+margin-top:10px;
+font-size:14px;
+font-weight:600;
+color:#E0A800;
+}
+
+/* INPUT */
+.input-box{
+background:white;
+padding:14px;
+border-radius:12px;
+margin-top:8px;
+margin-bottom:15px;
+border:1px solid #ddd;
+transition:0.3s;
+}
+
+.input-box input{
+border:none;
+outline:none;
+width:100%;
+font-size:14px;
+}
+
+/* FOCUS EFFECT */
+.input-box:focus-within{
+border-color:#E0A800;
+box-shadow:0 0 0 2px rgba(211,155,0,0.2);
+}
+
+/* OPTIONS */
+.options{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:13px;
+margin-bottom:20px;
+}
+
+.options span{
+cursor:pointer;
+}
+
+/* LOGIN BUTTON */
+.login-btn{
+background:#E0A800;
+color:white;
+border:none;
+padding:15px;
+border-radius:10px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.login-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* RIGHT IMAGE */
+.admin-right{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px;
+}
+
+.admin-right img{
+width:100%;
+max-width:500px;
+border-radius:20px;
+object-fit:cover;
+}

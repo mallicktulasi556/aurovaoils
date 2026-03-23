@@ -1,0 +1,228 @@
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family: "Inria Serif", serif;
+overflow-x:hidden;
+animation:fadeIn 0.8s ease;
+}
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#E0A800;
+color:white;
+padding:0 80px;
+width:100%;
+height:70px;
+background:linear-gradient(135deg,#E0A800,#f5c842);
+box-shadow:0 4px 20px rgba(0,0,0,0.15);
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+padding:8px 18px;
+border-radius:20px;
+transition:0.3s;
+}
+
+.nav-links a.active{
+background:white;
+color:#E0A800;
+font-weight:600;
+}
+.nav-links a:hover{
+opacity:0.8;
+background:white;
+color:#E0A800;
+}
+.nav-links li{
+cursor:pointer;
+font-weight:500;
+}
+
+.nav-icons{
+display:flex;
+gap:20px;
+}
+
+/* icon container */
+.icon{
+display:flex;
+align-items:center;
+justify-content:center;
+width:36px;
+height:36px;
+border-radius:50%;
+transition:0.3s;
+}
+
+/* icon itself */
+.icon svg{
+color:white;
+font-size:18px;
+transition:0.3s;
+}
+
+/* hover */
+.icon:hover{
+background:white;
+}
+
+.icon:hover svg{
+color:#E0A800;
+}
+
+/* active icon */
+.icon.active{
+background:white;
+}
+
+.icon.active svg{
+color:#E0A800;
+}
+
+.notification-page{
+padding:40px 80px;
+}
+
+.notification-page h1{
+font-size:34px;
+margin-bottom:5px;
+color:#3b2c00;
+}
+
+.sub{
+color:#777;
+margin-bottom:30px;
+font-size:15px;
+}
+
+.notification-box{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(135deg,#ffffff,#fff8e6);
+padding:22px 25px;
+border-radius:16px;
+border:1px solid rgba(227,196,109,0.6);
+margin-bottom:20px;
+transition:all 0.3s ease;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* hover effect */
+.notification-box:hover{
+transform:translateY(-5px) scale(1.01);
+box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+.notification-left{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.notification-left h3{
+margin:0;
+font-size:18px;
+font-weight:600;
+}
+
+.notification-left p{
+margin:4px 0;
+color:#666;
+font-size:14px;
+}
+
+.truck-icon{
+font-size:30px;
+color:#E0A800;
+background:#fff3cd;
+padding:12px;
+border-radius:50%;
+box-shadow:0 4px 12px rgba(247,148,29,0.4);
+}
+
+.offer-img{
+width:40px;
+}
+
+.date{
+color:#999;
+font-size:13px;
+font-weight:500;
+}
+
+/* FOOTER */
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #312604;
+    color: white;
+    padding: 60px 80px;
+    gap: 40px;
+}
+.footer h3 {
+    font-size: 20px;
+}
+
+.footer h4 {
+    font-size: 20px;
+}
+
+.footer p {
+    color: #ddd;
+    transition: 0.3s;
+    font-size: 16px;
+    margin-bottom:5px;
+}
+
+.footer p:hover {
+    color: #f5c842;
+    cursor: pointer;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ddd;
+  
+}
+
+.footer a:visited {
+    color: #ddd;
+      font-size: 16px;
+       
+}
+
+.footer a:hover {
+    color: #f5c842;
+}
+
+.copyright {
+    text-align: center;
+    background: #312604;
+    color: #ddd;
+    padding: 15px;
+    font-size: 14px;
+}
