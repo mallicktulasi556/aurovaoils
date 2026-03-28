@@ -14,9 +14,9 @@
 // // import { BASE_URL } from "../config";
 
 // import heroOil from "../images/herooil.png";
-// import oil1 from "../images/OIL.png";
-// import oil2 from "../images/OIL.png";
-// import oil3 from "../images/OIL.png";
+// import oil1 from "../images/oil.png";
+// import oil2 from "../images/oil.png";
+// import oil3 from "../images/oil.png";
 
 // export default function App() {
 
@@ -412,9 +412,9 @@ import { NavLink, Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import heroOil from "../images/herooil.png";
-import oil1 from "../images/OIL.png";
-import oil2 from "../images/OIL.png";
-import oil3 from "../images/OIL.png";
+import oil1 from "../images/oil.png";
+import oil2 from "../images/oil.png";
+import oil3 from "../images/oil.png";
 
 export default function App() {
     const navigate = useNavigate();

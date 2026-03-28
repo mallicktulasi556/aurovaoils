@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Animations.css";
-import bottle from "../images/OIL.png";
+import bottle from "../images/oil.png";
 import {
   FaShoppingCart,
   FaHeart,
