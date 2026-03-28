@@ -226,3 +226,34 @@ font-weight:500;
     padding: 15px;
     font-size: 14px;
 }
+
+.notification-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.notification-box:hover {
+  transform: scale(1.02);
+}
+
+.unread {
+  background: #fff3cd;
+  border-left: 4px solid orange;
+}
+
+.notification-badge {
+  background: red;
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: -5px;
+}

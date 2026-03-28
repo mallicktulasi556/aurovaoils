@@ -31,7 +31,7 @@ export default function Orders() {
         <h2>Aurova Oils</h2>
 
         <ul className="nav-links">
-          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/home">Home</NavLink></li>
           <li><NavLink to="/about">About Us</NavLink></li>
           <li><NavLink to="/oils">Oils</NavLink></li>
           <li><NavLink to="/benefits">Health Benefits</NavLink></li>
@@ -84,15 +84,64 @@ export default function Orders() {
         <div className="profile-content-main">
           <h2>My Orders</h2>
 
-          <div className="order-card">
-            <img src={pic} alt="oil" />
-            <div>
-              <h4>Ground Nut Oil</h4>
-              <p>250ml</p>
-              <p>₹190</p>
-            </div>
-          </div>
+  {/* FILTER TABS */}
+  <div className="order-tabs">
+    <span className="active">All</span>
+    <span>In Progress</span>
+    <span>Delivered</span>
+    <span>Canceled</span>
+  </div>
 
+  {/* ORDER CARD */}
+  <div className="order-card">
+
+    {/* TOP INFO */}
+    <div className="order-top">
+      <span className="status">Inprogress</span>
+      <span>8-mar-2026</span>
+      <span>Order ID - 254648</span>
+    </div>
+
+    {/* MAIN CONTENT */}
+    <div className="order-body">
+      <img src={pic} alt="oil" />
+
+      <div className="order-details">
+        <h4>Ground Nut Oil</h4>
+        <p>250ml</p>
+        <p>₹190</p>
+      </div>
+
+      <div className="arrow">
+        ❯
+      </div>
+    </div>
+
+  </div>
+
+  {/* DUPLICATE CARD (optional like your UI) */}
+  <div className="order-card">
+
+    <div className="order-top">
+      <span className="status">Inprogress</span>
+      <span>8-mar-2026</span>
+      <span>Order ID - 254648</span>
+    </div>
+
+    <div className="order-body">
+      <img src={pic} alt="oil" />
+
+      <div className="order-details">
+        <h4>Ground Nut Oil</h4>
+        <p>250ml</p>
+        <p>₹190</p>
+      </div>
+
+      <div className="arrow">
+        ❯
+      </div>
+</div>
+</div>
         </div>
          </div>
       
@@ -110,7 +159,7 @@ export default function Orders() {
 
   <div>
     <h4>Quick Links</h4>
-    <Link to="/"><p>Home</p></Link>
+    <Link to="/home"><p>Home</p></Link>
     <Link to="/oils"><p>All Oils</p></Link>
     <Link to="/benefits"><p>Health Benefits</p></Link>
     <Link to="/about"><p>About Us</p></Link>

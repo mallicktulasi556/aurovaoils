@@ -142,7 +142,7 @@
 
 // <h4>Quick Links</h4>
 
-// <Link to="/"><p>Home</p></Link>
+// <Link to="/home"><p>Home</p></Link>
 // <Link to="/oils"><p>All Oils</p></Link>
 // <Link to="/benefits"><p>Health Benefits</p></Link>
 // <Link to="/about"><p>About Us</p></Link>
@@ -182,187 +182,390 @@
 
 // }
 
+// import "./Notifications.css";
+// import { useEffect, useState } from "react";
+// import { FaShoppingCart, FaHeart, FaBell, FaUser, FaTruck } from "react-icons/fa";
+// import { NavLink, Link, useNavigate } from "react-router-dom";
+
+// export default function Notifications(){
+
+// const navigate = useNavigate();
+
+// const [notifications, setNotifications] = useState([]);
+// const [loading, setLoading] = useState(true);
+
+// // 🔥 FETCH NOTIFICATIONS
+// useEffect(() => {
+
+//   const fetchNotifications = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+
+//       const response = await fetch("http://192.168.88.10:8080/api/notifications", {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "Authorization": `Bearer ${token}`
+//         }
+//       });
+
+//       const data = await response.json();
+
+//       console.log("Notifications:", data);
+
+//       // 👉 adjust based on API response
+//       setNotifications(data);
+
+//     } catch (error) {
+//       console.error("Error fetching notifications:", error);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   fetchNotifications();
+
+// }, []);
+
+
+// // 🔴 LOGOUT (optional)
+// const handleLogout = () => {
+//   localStorage.clear();
+//   navigate("/home");
+// };
+
+
+// return(
+
+// <div>
+
+// {/* NAVBAR */}
+// <nav className="navbar">
+
+// <h2>Aurova Oils</h2>
+
+// <ul className="nav-links">
+
+// <li><NavLink to="/home">Home</NavLink></li>
+// <li><NavLink to="/about">About Us</NavLink></li>
+// <li><NavLink to="/oils">Oils</NavLink></li>
+// <li><NavLink to="/benefits">Health Benefits</NavLink></li>
+// <li><NavLink to="/contact">Contact Us</NavLink></li>
+
+// </ul>
+
+// <div className="nav-icons">
+
+// <NavLink to="/cart" className={({isActive}) => isActive ? "icon active" : "icon"}>
+// <FaShoppingCart/>
+// </NavLink>
+
+// <NavLink to="/wishlist" className={({isActive}) => isActive ? "icon active" : "icon"}>
+// <FaHeart/>
+// </NavLink>
+
+// <NavLink to="/notifications" className={({isActive}) => isActive ? "icon active" : "icon"}>
+// <FaBell/>
+// </NavLink>
+
+// <NavLink to="/profile" className={({isActive}) => isActive ? "icon active" : "icon"}>
+// <FaUser/>
+// </NavLink>
+
+// </div>
+
+// </nav>
+
+
+// {/* PAGE */}
+// <section className="notification-page">
+
+// <h1>Notifications</h1>
+
+// {loading ? (
+//   <p className="sub">Loading notifications...</p>
+// ) : notifications.length === 0 ? (
+//   <p className="sub">No notifications available</p>
+// ) : (
+//   <p className="sub">You have {notifications.length} notifications</p>
+// )}
+
+
+// {/* 🔥 DYNAMIC DATA */}
+// {notifications.map((item,index)=>(
+
+// <div className="notification-box" key={index}>
+
+// <div className="notification-left">
+
+// {/* ICON LOGIC */}
+// {item.type === "ORDER" ? (
+//   <FaTruck className="truck-icon"/>
+// ) : (
+//   <img
+//     className="offer-img"
+//     src="https://cdn-icons-png.flaticon.com/512/4471/4471321.png"
+//     alt="offer"
+//   />
+// )}
+
+// <p>{item.message || item.text}</p>
+
+// </div>
+
+// <span className="date">{item.date || item.createdAt}</span>
+
+// </div>
+
+// ))}
+
+// </section>
+
+
+// {/* FOOTER */}
+// <footer className="footer">
+
+// <div>
+// <h3>Aurova Oils</h3>
+// <p>
+// We produce natural oils using traditional cold-pressed methods
+// that preserve nutrients and flavor while ensuring purity.
+// </p>
+// </div>
+
+// <div>
+// <h4>Quick Links</h4>
+// <Link to="/home"><p>Home</p></Link>
+// <Link to="/oils"><p>All Oils</p></Link>
+// <Link to="/benefits"><p>Health Benefits</p></Link>
+// <Link to="/about"><p>About Us</p></Link>
+// <Link to="/contact"><p>Contact</p></Link>
+// </div>
+
+// <div>
+// <h4>Customer Support</h4>
+// <p>Privacy Policy</p>
+// <p>Terms & Conditions</p>
+// </div>
+
+// <div>
+// <h4>Contact Us</h4>
+// <p>Address: 123 Oil Street</p>
+// <p>Mumbai, India</p>
+// <p>Phone: +91 98765 43210</p>
+// <p>Email: oils@gmail.com</p>
+// </div>
+
+// </footer>
+
+// <div className="copyright">
+// © 2026 Aurova Oils. All rights reserved. Made with ❤️ for healthy living.
+// </div>
+
+// </div>
+
+// );
+// }
+
 import "./Notifications.css";
 import { useEffect, useState } from "react";
 import { FaShoppingCart, FaHeart, FaBell, FaUser, FaTruck } from "react-icons/fa";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 
-export default function Notifications(){
+const BASE_URL = "http://18.61.100.138:8080";
 
-const navigate = useNavigate();
+export default function Notifications() {
 
-const [notifications, setNotifications] = useState([]);
-const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-// 🔥 FETCH NOTIFICATIONS
-useEffect(() => {
+  const [notifications, setNotifications] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const fetchNotifications = async () => {
+  // ✅ FETCH NOTIFICATIONS
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const response = await fetch(`${BASE_URL}/api/notifications`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await response.json();
+        console.log("Notifications:", data);
+
+        setNotifications(Array.isArray(data) ? data : []);
+
+      } catch (error) {
+        console.error("Fetch error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNotifications();
+  }, []);
+
+  // ✅ MARK AS READ
+  const markAsRead = async (id) => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://192.168.88.10:8080/api/notifications", {
-        method: "GET",
+      await fetch(`${BASE_URL}/api/notifications/${id}/read`, {
+        method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
 
-      const data = await response.json();
-
-      console.log("Notifications:", data);
-
-      // 👉 adjust based on API response
-      setNotifications(data);
+      // ✅ UPDATE UI
+      setNotifications((prev) =>
+        prev.map((item) =>
+          item.id === id ? { ...item, isRead: true } : item
+        )
+      );
 
     } catch (error) {
-      console.error("Error fetching notifications:", error);
-    } finally {
-      setLoading(false);
+      console.error("Mark read error:", error);
     }
   };
 
-  fetchNotifications();
+  // 🔴 LOGOUT
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/home");
+  };
 
-}, []);
+  // 🔔 UNREAD COUNT
+  const unreadCount = notifications.filter(n => !n.isRead).length;
 
+  return (
+    <div>
 
-// 🔴 LOGOUT (optional)
-const handleLogout = () => {
-  localStorage.clear();
-  navigate("/");
-};
+      {/* NAVBAR */}
+      <nav className="navbar">
 
+        <h2>Aurova Oils</h2>
 
-return(
+        <ul className="nav-links">
+          <li><NavLink to="/home">Home</NavLink></li>
+          <li><NavLink to="/about">About Us</NavLink></li>
+          <li><NavLink to="/oils">Oils</NavLink></li>
+          <li><NavLink to="/benefits">Health Benefits</NavLink></li>
+          <li><NavLink to="/contact">Contact Us</NavLink></li>
+        </ul>
 
-<div>
+        <div className="nav-icons">
 
-{/* NAVBAR */}
-<nav className="navbar">
+          <NavLink to="/cart" className="icon">
+            <FaShoppingCart />
+          </NavLink>
 
-<h2>Aurova Oils</h2>
+          <NavLink to="/wishlist" className="icon">
+            <FaHeart />
+          </NavLink>
 
-<ul className="nav-links">
+          {/* 🔔 NOTIFICATION ICON WITH COUNT */}
+          <NavLink to="/notifications" className="icon active">
+            <FaBell />
+            {unreadCount > 0 && (
+              <span className="notification-badge">{unreadCount}</span>
+            )}
+          </NavLink>
 
-<li><NavLink to="/">Home</NavLink></li>
-<li><NavLink to="/about">About Us</NavLink></li>
-<li><NavLink to="/oils">Oils</NavLink></li>
-<li><NavLink to="/benefits">Health Benefits</NavLink></li>
-<li><NavLink to="/contact">Contact Us</NavLink></li>
+          <NavLink to="/profile" className="icon">
+            <FaUser />
+          </NavLink>
 
-</ul>
+        </div>
 
-<div className="nav-icons">
+      </nav>
 
-<NavLink to="/cart" className={({isActive}) => isActive ? "icon active" : "icon"}>
-<FaShoppingCart/>
-</NavLink>
+      {/* PAGE */}
+      <section className="notification-page">
 
-<NavLink to="/wishlist" className={({isActive}) => isActive ? "icon active" : "icon"}>
-<FaHeart/>
-</NavLink>
+        <h1>Notifications</h1>
 
-<NavLink to="/notifications" className={({isActive}) => isActive ? "icon active" : "icon"}>
-<FaBell/>
-</NavLink>
+        {loading ? (
+          <p className="sub">Loading notifications...</p>
+        ) : notifications.length === 0 ? (
+          <p className="sub">No notifications available</p>
+        ) : (
+          <p className="sub">
+            You have {notifications.length} notifications
+          </p>
+        )}
 
-<NavLink to="/profile" className={({isActive}) => isActive ? "icon active" : "icon"}>
-<FaUser/>
-</NavLink>
+        {/* ✅ NOTIFICATION LIST */}
+        {notifications.map((item) => (
 
-</div>
+          <div
+            key={item.id}
+            className={`notification-box ${!item.isRead ? "unread" : ""}`}
+            onClick={() => markAsRead(item.id)}
+          >
 
-</nav>
+            <div className="notification-left">
 
+              {/* ICON */}
+              <FaTruck className="truck-icon" />
 
-{/* PAGE */}
-<section className="notification-page">
+              <p>{item.message}</p>
 
-<h1>Notifications</h1>
+            </div>
 
-{loading ? (
-  <p className="sub">Loading notifications...</p>
-) : notifications.length === 0 ? (
-  <p className="sub">No notifications available</p>
-) : (
-  <p className="sub">You have {notifications.length} notifications</p>
-)}
+            <span className="date">
+              {new Date(item.createdAt).toLocaleString()}
+            </span>
 
+          </div>
 
-{/* 🔥 DYNAMIC DATA */}
-{notifications.map((item,index)=>(
+        ))}
 
-<div className="notification-box" key={index}>
+      </section>
 
-<div className="notification-left">
+      {/* FOOTER */}
+      <footer className="footer">
 
-{/* ICON LOGIC */}
-{item.type === "ORDER" ? (
-  <FaTruck className="truck-icon"/>
-) : (
-  <img
-    className="offer-img"
-    src="https://cdn-icons-png.flaticon.com/512/4471/4471321.png"
-    alt="offer"
-  />
-)}
+        <div>
+          <h3>Aurova Oils</h3>
+          <p>
+            We produce natural oils using traditional cold-pressed methods
+            that preserve nutrients and flavor while ensuring purity.
+          </p>
+        </div>
 
-<p>{item.message || item.text}</p>
+        <div>
+          <h4>Quick Links</h4>
+          <Link to="/home"><p>Home</p></Link>
+          <Link to="/oils"><p>All Oils</p></Link>
+          <Link to="/benefits"><p>Health Benefits</p></Link>
+          <Link to="/about"><p>About Us</p></Link>
+          <Link to="/contact"><p>Contact</p></Link>
+        </div>
 
-</div>
+        <div>
+          <h4>Customer Support</h4>
+          <p>Privacy Policy</p>
+          <p>Terms & Conditions</p>
+        </div>
 
-<span className="date">{item.date || item.createdAt}</span>
+        <div>
+          <h4>Contact Us</h4>
+          <p>Address: 123 Oil Street</p>
+          <p>Mumbai, India</p>
+          <p>Phone: +91 98765 43210</p>
+          <p>Email: oils@gmail.com</p>
+        </div>
 
-</div>
+      </footer>
 
-))}
+      <div className="copyright">
+        © 2026 Aurova Oils. All rights reserved.
+      </div>
 
-</section>
-
-
-{/* FOOTER */}
-<footer className="footer">
-
-<div>
-<h3>Aurova Oils</h3>
-<p>
-We produce natural oils using traditional cold-pressed methods
-that preserve nutrients and flavor while ensuring purity.
-</p>
-</div>
-
-<div>
-<h4>Quick Links</h4>
-<Link to="/"><p>Home</p></Link>
-<Link to="/oils"><p>All Oils</p></Link>
-<Link to="/benefits"><p>Health Benefits</p></Link>
-<Link to="/about"><p>About Us</p></Link>
-<Link to="/contact"><p>Contact</p></Link>
-</div>
-
-<div>
-<h4>Customer Support</h4>
-<p>Privacy Policy</p>
-<p>Terms & Conditions</p>
-</div>
-
-<div>
-<h4>Contact Us</h4>
-<p>Address: 123 Oil Street</p>
-<p>Mumbai, India</p>
-<p>Phone: +91 98765 43210</p>
-<p>Email: oils@gmail.com</p>
-</div>
-
-</footer>
-
-<div className="copyright">
-© 2026 Aurova Oils. All rights reserved. Made with ❤️ for healthy living.
-</div>
-
-</div>
-
-);
+    </div>
+  );
 }

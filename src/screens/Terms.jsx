@@ -29,7 +29,7 @@ export default function Terms() {
         <h2>Aurova Oils</h2>
 
         <ul className="nav-links">
-          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/home">Home</NavLink></li>
           <li><NavLink to="/about">About Us</NavLink></li>
           <li><NavLink to="/oils">Oils</NavLink></li>
           <li><NavLink to="/benefits">Health Benefits</NavLink></li>
@@ -108,12 +108,29 @@ export default function Terms() {
 
           <h2>Terms and Conditions</h2>
 
-          <ol>
-            <li>All orders depend on product availability.</li>
-            <li>Customers must provide correct information.</li>
-            <li>Prices may change anytime.</li>
-            <li>Orders cannot be cancelled after shipping.</li>
-          </ol>
+           <ol>
+    <li>
+      All oil products listed on the website are made using quality
+      ingredients and are meant for personal consumption only.
+    </li>
+    <li>
+      Customers must provide correct delivery details to ensure
+      successful order processing and shipment.
+    </li>
+    <li>
+      Product prices and availability may change without prior notice
+      depending on stock and market conditions.
+    </li>
+    <li>
+      Once the order is confirmed and dispatched, cancellation or
+      changes may not be possible.
+    </li>
+    <li>
+      Returns or replacements are accepted only if the product is
+      damaged, leaking, or incorrect at the time of delivery.
+    </li>
+  </ol>
+
 
         </div>
 
@@ -131,7 +148,7 @@ export default function Terms() {
 
   <div>
     <h4>Quick Links</h4>
-    <Link to="/"><p>Home</p></Link>
+    <Link to="/home"><p>Home</p></Link>
     <Link to="/oils"><p>All Oils</p></Link>
     <Link to="/benefits"><p>Health Benefits</p></Link>
     <Link to="/about"><p>About Us</p></Link>

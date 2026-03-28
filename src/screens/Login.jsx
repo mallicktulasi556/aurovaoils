@@ -115,10 +115,10 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const [email,setEmail] = useState("");
+  const [emailormobilenumber,setemailormobilenumber] = useState("");
   const [password,setPassword] = useState("");
 
-  const BASE_URL = "http://192.168.88.10:8080";
+  const BASE_URL = "http://18.61.100.138:8080";
 
   const handleLogin = async () => {
     try{
@@ -128,7 +128,7 @@ function Login() {
           "Content-Type":"application/json"
         },
         body:JSON.stringify({
-          email:email,
+          username:emailormobilenumber,
           password:password
         })
       });
@@ -142,9 +142,9 @@ function Login() {
         // ✅ STORE TOKEN
         localStorage.setItem("token", data.token);
 
-        alert("Login Successful");
+        // alert("Login Successful");
 
-        navigate("/profile");
+        navigate("/home");
 
       }else{
         alert(data.message || "Login Failed");
@@ -175,8 +175,8 @@ function Login() {
           <label>Email Id / Mobile</label>
           <input 
             type="text"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
+            value={emailormobilenumber}
+            onChange={(e)=>setemailormobilenumber(e.target.value)}
           />
 
           <label>Password</label>

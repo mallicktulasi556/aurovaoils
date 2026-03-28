@@ -68,7 +68,9 @@ function App() {
   return (
     <Routes>
 
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/oils" element={<Oils />} />
       <Route path="/benefits" element={<Benefits />} />
@@ -77,10 +79,9 @@ function App() {
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/notifications" element={<Notifications />} />
       <Route path="/payment" element={<Payment />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
       {/* <Route path="/profilepage" element={<ProfilePage />} /> */}
-      <Route path="/productdescription/:id" element={<ProductDescription />} />
+      {/* <Route path="/productdescription/:id" element={<ProductDescription />} /> */}
+      <Route path="/products/:productId" element={<ProductDescription />} />
       <Route path="/adminlogin" element={<Adminlogin/>} />
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/products" element={<Products/>} />

@@ -21,7 +21,7 @@ export default function About() {
 <ul className="nav-links">
 
 <li>
-<NavLink to="/" className={({isActive}) => isActive ? "active" : ""}>
+<NavLink to="/home" className={({isActive}) => isActive ? "active" : ""}>
 Home
 </NavLink>
 </li>
@@ -175,7 +175,7 @@ Contact Us
 
           <h4>Quick Links</h4>
 
-     <Link to="/"><p>Home</p></Link>
+     <Link to="/home"><p>Home</p></Link>
 <Link to="/oils"><p>All Oils</p></Link>
 <Link to="/benefits"><p>Health Benefits</p></Link>
 <Link to="/about"><p>About Us</p></Link>

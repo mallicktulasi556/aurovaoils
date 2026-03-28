@@ -29,7 +29,7 @@ export default function Privacy() {
         <h2>Aurova Oils</h2>
 
         <ul className="nav-links">
-          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/home">Home</NavLink></li>
           <li><NavLink to="/about">About Us</NavLink></li>
           <li><NavLink to="/oils">Oils</NavLink></li>
           <li><NavLink to="/benefits">Health Benefits</NavLink></li>
@@ -108,15 +108,28 @@ export default function Privacy() {
 
           <h2>Privacy Policy</h2>
 
-          <p>
-            We collect basic customer information such as name,
-            email and contact details to process orders.
-          </p>
-
-          <p>
-            Your information is used only to fulfil orders and
-            provide better service.
-          </p>
+      <ul className="privacy-list">
+    <li>
+      We collect basic customer information such as name, phone number,
+      email, and address to process orders and provide delivery services.
+    </li>
+    <li>
+      All personal information shared on our website is kept secure and
+      used only for order processing and customer support.
+    </li>
+    <li>
+      We do not sell, trade, or share your personal information with
+      third parties without your permission.
+    </li>
+    <li>
+      Payment information is processed through secure payment gateways
+      to ensure safe transactions.
+    </li>
+    <li>
+      We may use customer data to improve our services, website experience,
+      and to inform users about new products or offers.
+    </li>
+  </ul>
 
         </div>
          </div>
@@ -135,7 +148,7 @@ purity.
 
 <div>
 <h4>Quick Links</h4>
-<Link to="/"><p>Home</p></Link>
+<Link to="/home"><p>Home</p></Link>
 <Link to="/oils"><p>All Oils</p></Link>
 <Link to="/benefits"><p>Health Benefits</p></Link>
 <Link to="/about"><p>About Us</p></Link>

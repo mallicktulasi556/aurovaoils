@@ -459,9 +459,9 @@ import mustard from "../images/groundnut-oil.png";
 
 export default function ProductDescription() {
 
-const { id } = useParams();
+const { productId } = useParams();
 
-const BASE_URL = "http://192.168.88.7:8080";
+const BASE_URL = "http://18.61.100.138:8080";
 
 const [product,setProduct] = useState(null);
 
@@ -472,7 +472,7 @@ const [cart, setCart] = useState([]);
 
 useEffect(()=>{
 
-fetch(`${BASE_URL}/api/products/${id}`)
+fetch(`${BASE_URL}/api/products/${productId}`)
 .then(res=>res.json())
 .then(data=>{
 console.log("Product:",data)
@@ -480,7 +480,7 @@ setProduct(data)
 })
 .catch(err=>console.log(err))
 
-},[id])
+},[productId])
 
 const increase = () =>{
 setQty(qty+1)
@@ -491,7 +491,33 @@ if(qty>1){
 setQty(qty-1)
 }
 }
+const addToCartAPI = async (productId) => {
+  try {
+    const token = localStorage.getItem("token");
 
+    const response = await fetch(`${BASE_URL}/api/cart`, {
+      method: "POST", // confirm if POST or PUT
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        productId: productId,
+        quantity: qty
+      })
+    });
+
+    const result = await response.text(); // backend returns text
+
+    console.log("Cart:", result);
+
+    alert("Added to cart ✅");
+
+  } catch (error) {
+    console.error("Cart error:", error);
+    alert("Failed to add cart ❌");
+  }
+};
 const relatedProducts = [
 {
 id:1,
@@ -553,7 +579,7 @@ return (
 <ul className="nav-links">
 
 <li>
-<NavLink to="/" className={({isActive}) => isActive ? "active" : ""}>
+<NavLink to="/home" className={({isActive}) => isActive ? "active" : ""}>
 Home
 </NavLink>
 </li>
@@ -698,7 +724,8 @@ placeholder="Enter Quantity"
 
 </div>
 
-<button className="cart-btn">
+<button className="cart-btn" onClick={() => addToCartAPI(product.productId)}>
+    
 <FaShoppingCart/> Add to Cart
 </button>
 
@@ -840,7 +867,7 @@ purity.
 
 <div>
 <h4>Quick Links</h4>
-<Link to="/"><p>Home</p></Link>
+<Link to="/home"><p>Home</p></Link>
 <Link to="/oils"><p>All Oils</p></Link>
 <Link to="/benefits"><p>Health Benefits</p></Link>
 <Link to="/about"><p>About Us</p></Link>

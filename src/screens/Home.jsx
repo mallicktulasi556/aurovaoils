@@ -420,10 +420,10 @@ export default function App() {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [favorites, setFavorites] = useState([]);
-    const [cart, setCart] = useState([]);
     const [showAll, setShowAll] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
 
-    const BASE_URL = "http://192.168.88.7:8080";
+    const BASE_URL = "http://18.61.100.138:8080";
 
     useEffect(() => {
 
@@ -439,21 +439,162 @@ export default function App() {
 
     }, [])
 
-    const toggleFavorite = (id) => {
-        if (favorites.includes(id)) {
-            setFavorites(favorites.filter(item => item !== id))
-        } else {
-            setFavorites([...favorites, id])
-        }
+useEffect(() => {
+  const fetchWishlist = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await fetch(`${BASE_URL}/api/wishlist`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      console.log("Wishlist API:", data);
+
+      const updatedData = (data.products || []).map(item => ({
+        ...item,
+        qty: item.qty || 1
+      }));
+
+      setWishlist(updatedData);
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  fetchWishlist();
+}, []);
+
+const fetchCart = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(`${BASE_URL}/api/cart`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await res.json();
+    setCartItems(data.items || []);
+
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+useEffect(() => {
+  fetchCart();
+}, []);
+
+const isInCart = (productId) => {
+  return cartItems.some(item => item.productId === productId);
+};
+
+
+const toggleFavorite = async (productId) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (favorites.includes(productId)) {
+
+      // ❌ REMOVE
+      await fetch(`${BASE_URL}/api/wishlist/${productId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setFavorites(favorites.filter(id => id !== productId));
+
+    } else {
+
+      // ✅ ADD
+      await fetch(`${BASE_URL}/api/wishlist/${productId}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setFavorites([...favorites, productId]);
     }
 
-    const toggleCart = (id) => {
-        if (cart.includes(id)) {
-            setCart(cart.filter(item => item !== id))
-        } else {
-            setCart([...cart, id])
-        }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+// const addToCartAPI = async (productId) => {
+//   try {
+//     const token = localStorage.getItem("token");
+
+//     if (!token) {
+//       alert("Please login first ❌");
+//       return;
+//     }
+
+//     const response = await fetch(`${BASE_URL}/api/cart`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`
+//       },
+//       body: JSON.stringify({
+//         productId: productId,
+//         quantity: 1
+//       })
+//     });
+
+//     if (!response.ok) {
+//       const err = await response.text();
+//       console.log(err);
+//       throw new Error("Failed");
+//     }
+
+//     alert("Added to cart ✅");
+
+//   } catch (error) {
+//     console.error("Cart error:", error);
+//     alert("Failed to add cart ❌");
+//   }
+// };
+
+const addToCartAPI = async (productId) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Please login first ❌");
+      return;
     }
+
+    const response = await fetch(`${BASE_URL}/api/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        productId,
+        quantity: 1
+      })
+    });
+
+    if (!response.ok) throw new Error();
+
+    await fetchCart(); // 🔥 IMPORTANT
+
+  } catch (error) {
+    console.error(error);
+  }
+};
 
     const benefits = [
         { icon: <FaHeart />, title: "Heart Healthy" },
@@ -475,9 +616,10 @@ export default function App() {
                 <ul className="nav-links">
 
                     <li>
-                        <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>
+                        <NavLink to="/home" className={({ isActive }) => isActive ? "active" : ""}>
                             Home
                         </NavLink>
+                        
                     </li>
 
                     <li>
@@ -619,11 +761,11 @@ export default function App() {
 
                     {products.slice(0, showAll ? 6 : 3).map((item) => (
 
-                        <div className="card" key={item.id}>
+                        <div className="card" key={item.productId}>
 
                             <div
-                                className={`wishlist ${favorites.includes(item.id) ? "active" : ""}`}
-                                onClick={() => toggleFavorite(item.id)}
+                                className={`wishlist ${favorites.includes(item.productId) ? "active" : ""}`}
+                                onClick={() => toggleFavorite(item.productId)}
                             >
                                 <FaHeart />
                             </div>
@@ -641,19 +783,27 @@ export default function App() {
 
                                 <p>{item.description}</p>
 
-                                <button
-                                    className={`btn-cart ${cart.includes(item.id) ? "added" : ""}`}
-                                    onClick={() => toggleCart(item.id)}
+                                {/* <button
+                                    className={`btn-cart ${cart.includes(item.productId) ? "added" : ""}`}
+                                    onClick={() => { toggleCart(item.productId);   addToCartAPI(item.productId); }}
                                 >
                                     <FaShoppingCart />
-                                    {cart.includes(item.id) ? " Remove Cart" : " Add to Cart"}
-                                </button>
+                                    {cart.includes(item.productId) ? " Remove Cart" : " Add to Cart"}
+                                </button> */}
+                                <button
+  className={`btn-cart ${isInCart(item.productId) ? "added" : ""}`}
+  onClick={() => addToCartAPI(item.productId)}
+>
+  <FaShoppingCart />
+  {isInCart(item.productId) ? "Added" : "Add to Cart"}
+</button>
 
                                 {/* NAVIGATION TO PRODUCT PAGE */}
 
-         <NavLink to={`/animations/${item.id}`} className="details">
+         {/* <NavLink to={`/animations`} className="details">
   View Details
-</NavLink>
+</NavLink> */}
+<NavLink to={`/products/${item.productId}`} className="details">View Details</NavLink>
 
         </div>
 
@@ -840,7 +990,7 @@ export default function App() {
 
                 <div>
                     <h4>Quick Links</h4>
-                    <Link to="/"><p>Home</p></Link>
+                    <Link to="/home"><p>Home</p></Link>
                     <Link to="/oils"><p>All Oils</p></Link>
                     <Link to="/benefits"><p>Health Benefits</p></Link>
                     <Link to="/about"><p>About Us</p></Link>
